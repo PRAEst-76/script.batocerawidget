@@ -1,71 +1,63 @@
 import os
 import xml.etree.ElementTree as ET
-import xbmc
-from datetime import datetime
+import xbmc  # Import xbmc for logging
 
-def load_xml(file_path):
-    try:
-        tree = ET.parse(file_path)
-        return tree
-    except ET.ParseError as e:
-        xbmc.log(f"Error parsing XML file {file_path}: {e}", level=xbmc.LOGERROR)
-        return None
-
-def search_favorite_games(root):
-    result = []
-    for game in root.findall(".//game"):
-        if game.find("favorite") is not None:
-            game_info = get_game_info(game)
-            result.append(game_info)
-    return result
-
-def search_last_20_added(root):
-    result = []
+def process_gamelist_files(search_directory, search_type):
     games = []
-    for game in root.findall(".//game"):
-        added_date_elem = game.find("added_date")
-        if added_date_elem is not None:
+
+    for root, dirs, files in os.walk(search_directory):
+        # Skip hidden directories
+        dirs[:] = [d for d in dirs if not d.startswith('.')]  # Modify dirs in place to skip hidden ones
+
+        if 'gamelist.xml' in files:
+            file_path = os.path.join(root, 'gamelist.xml')
+            xbmc.log(f"Gamelist Parser: Parsing {file_path}", xbmc.LOGDEBUG)
+
+            # Check if the file is empty
+            if os.path.getsize(file_path) == 0:
+                xbmc.log(f"Gamelist Parser: {file_path} is empty. Skipping.", xbmc.LOGWARNING)
+                continue
+
             try:
-                added_date = datetime.strptime(added_date_elem.text, "%Y-%m-%dT%H:%M:%S")
-                game_info = get_game_info(game)
-                game_info["added_date"] = added_date
-                games.append(game_info)
-            except ValueError:
-                xbmc.log(f"Invalid date format in game: {game}", level=xbmc.LOGWARNING)
+                tree = ET.parse(file_path)
+            except ET.ParseError as e:
+                xbmc.log(f"Gamelist Parser: Error parsing {file_path} - {e}", xbmc.LOGERROR)
+                continue  # Skip this file and move on
 
-    # Sort by date and take the last 20
-    games_sorted = sorted(games, key=lambda x: x["added_date"], reverse=True)[:20]
-    result.extend(games_sorted)
-    return result
+            gamelist_root = tree.getroot()
 
-def get_game_info(game):
-    game_info = {}
-    name_elem = game.find("name")
-    if name_elem is not None:
-        game_info["name"] = name_elem.text
-    thumbnail_elem = game.find("thumbnail")
-    if thumbnail_elem is not None:
-        game_info["thumbnail"] = thumbnail_elem.text
-    return game_info
+            for game in gamelist_root.findall("game"):
+                # Only include games with a <favourite> tag if search_type is for favorites
+                if search_type == "0" and game.find("favourite") is None:
+                    continue
 
-def find_gamelist_files(directory):
-    gamelist_files = []
-    for root, dirs, files in os.walk(directory):
-        dirs[:] = [d for d in dirs if not d.startswith('.')]
-        for file in files:
-            if file == "gamelist.xml":
-                gamelist_files.append(os.path.join(root, file))
-    return gamelist_files
+                game_data = {}
 
-def process_gamelist_files(directory, search_type):
-    games = []
-    gamelist_files = find_gamelist_files(directory)
-    for file_path in gamelist_files:
-        tree = load_xml(file_path)
-        if tree:
-            root = tree.getroot()
-            if search_type == "0":  # Favorites
-                games.extend(search_favorite_games(root))
-            elif search_type == "1":  # Last 20 Added
-                games.extend(search_last_20_added(root))
+                # Extract name, thumbnail, and fanart path (if present)
+                name_tag = game.find("name")
+                thumbnail_tag = game.find("thumbnail")
+                image_tag = game.find("image")
+
+                game_data["name"] = name_tag.text if name_tag is not None else "Unknown Game"
+                
+                # Resolve thumbnail path to an absolute path based on the gamelist.xml location
+                if thumbnail_tag is not None:
+                    thumbnail_path = thumbnail_tag.text
+                    if not os.path.isabs(thumbnail_path):
+                        thumbnail_path = os.path.join(root, thumbnail_path)
+                    game_data["thumbnail"] = thumbnail_path
+
+                # Resolve fanart path based on the <image> tag if present
+                if image_tag is not None:
+                    fanart_path = image_tag.text
+                    if not os.path.isabs(fanart_path):
+                        fanart_path = os.path.join(root, fanart_path)
+                    game_data["fanart"] = fanart_path
+
+                games.append(game_data)
+
+                # If we're only interested in the last 20 added games, stop after 20 entries
+                if search_type == "1" and len(games) >= 20:
+                    break
+
     return games
