@@ -1,0 +1,4 @@
+<settings>
+    <setting id="search_directory" type="folder" label="ROMS directory" />
+    <setting id="search_type" type="enum" label="Search Type" values="Favorites|Last 20 Added" default="0" />
+</settings>

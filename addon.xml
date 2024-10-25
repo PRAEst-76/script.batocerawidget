@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.gamelistparser" name="Gamelist Parser" version="0.0.4" provider-name="PRAEst76">
+    <requires>
+        <import addon="xbmc.python" version="3.0.0" />
+    </requires>
+    <extension point="xbmc.python.script" library="default.py">
+        <provides>executable</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>Parse gamelist.xml files for favorite games</summary>
+        <description>Searches through gamelist.xml files in a specified directory and displays favorite games with their thumbnails.</description>
+        <platform>all</platform>
+    </extension>
+</addon>

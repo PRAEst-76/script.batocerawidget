@@ -1,0 +1,16 @@
+<!ELEMENT addon (requires,extension+)>
+<!ATTLIST addon id NMTOKEN #REQUIRED>
+<!ATTLIST addon name CDATA #REQUIRED>
+<!ATTLIST addon version NMTOKEN #REQUIRED>
+<!ATTLIST addon provider-name NMTOKEN #REQUIRED>
+<!ELEMENT requires (import)>
+<!ELEMENT import EMPTY>
+<!ATTLIST import addon NMTOKEN #REQUIRED>
+<!ATTLIST import version NMTOKEN #REQUIRED>
+<!ELEMENT extension (provides?,summary?,description?,platform?)>
+<!ATTLIST extension point NMTOKEN #REQUIRED>
+<!ATTLIST extension library NMTOKEN #IMPLIED>
+<!ELEMENT provides (#PCDATA)>
+<!ELEMENT summary (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT platform (#PCDATA)>
