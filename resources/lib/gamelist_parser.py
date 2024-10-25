@@ -27,8 +27,8 @@ def process_gamelist_files(search_directory, search_type):
             gamelist_root = tree.getroot()
 
             for game in gamelist_root.findall("game"):
-                # Only include games with a <favourite> tag if search_type is for favorites
-                if search_type == "0" and game.find("favourite") is None:
+                # Only include games with a <favorite> tag if search_type is for favorites
+                if search_type == "0" and game.find("favorite") is None:
                     continue
 
                 game_data = {}
