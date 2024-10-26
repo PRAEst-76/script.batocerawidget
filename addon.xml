@@ -3,19 +3,24 @@
     <requires>
         <import addon="xbmc.python" version="3.0.0" />
     </requires>
-    <extension point="xbmc.python.pluginsource" library="default.py">
+    
+    <!-- Define the add-on type as a Python script -->
+    <extension point="xbmc.python.script" library="default.py">
         <provides>video</provides>
     </extension>
+    
+    <!-- Metadata for the add-on -->
     <extension point="xbmc.addon.metadata">
         <summary>Fetch favorite games from Batocera</summary>
         <description>Searches through gamelist.xml files in the specified roms directory and displays favorite games with thumbnails and metadata.</description>
         <platform>all</platform>
-        <defaultpath>/userdata/roms</defaultpath>
         <assets>
             <icon>resources/icon.png</icon>
             <fanart>resources/fanart.jpg</fanart>
         </assets>
     </extension>
+    
+    <!-- Settings for the add-on -->
     <extension point="xbmc.addon.settings">
         <category label="Settings">
             <setting id="rom_directory" type="text" default="/userdata/roms" label="ROM Directory Path" />
