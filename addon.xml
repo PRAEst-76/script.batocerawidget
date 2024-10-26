@@ -7,12 +7,18 @@
         <provides>video</provides>
     </extension>
     <extension point="xbmc.addon.metadata">
-        <summary>Fetch Batocera favorites and display in a Kodi widget</summary>
-        <description>Searches through gamelist.xml files in the roms directory and displays favorite games with their thumbnails and metadata as aselectable video widget.</description>
+        <summary>Fetch favorite games from Batocera</summary>
+        <description>Searches through gamelist.xml files in the specified roms directory and displays favorite games with thumbnails and metadata.</description>
         <platform>all</platform>
+        <defaultpath>/userdata/roms</defaultpath>
         <assets>
             <icon>resources/icon.png</icon>
             <fanart>resources/fanart.jpg</fanart>
         </assets>
+    </extension>
+    <extension point="xbmc.addon.settings">
+        <category label="Settings">
+            <setting id="rom_directory" type="text" default="/userdata/roms" label="ROM Directory Path" />
+        </category>
     </extension>
 </addon>
