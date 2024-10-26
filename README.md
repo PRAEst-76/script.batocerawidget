@@ -1,4 +1,4 @@
-This Kodi addon script will parse gamelist files in Batocera's roms directory for favorites and display them in a widget.
+This Kodi addon script will parse gamelist files in Batocera Linux's roms directory for favorites and display them in a widget.
 
 Currently, this only works with versions of Kodi installed within Batocera. I may add support for other EmulationStation-based gaming platforms if there is interest.
 
