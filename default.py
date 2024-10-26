@@ -17,15 +17,16 @@ def main():
         list_item = xbmcgui.ListItem(label=game["name"])
         list_item.setArt({"thumb": game["thumbnail"], "fanart": game["fanart"]})
 
-        # Add info for both "video" and "music" to improve display chances
-        info_labels = {
-            "title": game["name"],
-            "plot": game["description"],
-            "year": int(game["year"]) if game["year"].isdigit() else 0,
-            "rating": float(game["rating"]) if game["rating"].replace('.', '', 1).isdigit() else 0.0
-        }
-        list_item.setInfo("video", info_labels)
-        list_item.setInfo("music", info_labels)  # Add as "music" for broader compatibility
+        # Use InfoTagVideo to set year and rating specifically for video-type info
+        info_tag = list_item.getVideoInfoTag()
+        info_tag.setTitle(game["name"])
+        info_tag.setPlot(game["description"])
+        
+        # Set year and rating, making sure they are converted to appropriate types
+        if game["year"].isdigit():
+            info_tag.setYear(int(game["year"]))
+        if game["rating"].replace('.', '', 1).isdigit():
+            info_tag.setRating(float(game["rating"]))
 
         # Add each game to the Kodi directory for the widget
         xbmcplugin.addDirectoryItem(handle=HANDLE, url="", listitem=list_item, isFolder=False)
