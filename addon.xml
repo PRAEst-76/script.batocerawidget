@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.gamelistparser" name="Gamelist Parser" version="1.0.0" provider-name="YourName">
+<addon id="script.batocera" name="Batocera Favorites" version="0.0.6" provider-name="PRAEst76">
     <requires>
         <import addon="xbmc.python" version="3.0.0" />
     </requires>
@@ -7,8 +7,12 @@
         <provides>video</provides>
     </extension>
     <extension point="xbmc.addon.metadata">
-        <summary>Parse gamelist.xml files for favorite games</summary>
-        <description>Searches through gamelist.xml files in a specified directory and displays favorite games with their thumbnails.</description>
+        <summary>Fetch favorite games from Batocera</summary>
+        <description>Searches through gamelist.xml files in the roms directory and displays favorite games with their thumbnails and metadata.</description>
         <platform>all</platform>
+        <assets>
+            <icon>resources/icon.png</icon>
+            <fanart>resources/fanart.jpg</fanart>
+        </assets>
     </extension>
 </addon>

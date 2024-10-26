@@ -1,6 +1,6 @@
 import os
 import xml.etree.ElementTree as ET
-import xbmc  # Import xbmc for logging
+import xbmc  # Logging
 
 def process_gamelist_files(search_directory, search_type):
     games = []
@@ -33,13 +33,25 @@ def process_gamelist_files(search_directory, search_type):
 
                 game_data = {}
 
-                # Extract name, thumbnail, and fanart path (if present)
+                # Extract game details
                 name_tag = game.find("name")
                 thumbnail_tag = game.find("thumbnail")
-                image_tag = game.find("image")
+                fanart_tag = game.find("fanart")  # Check for <fanart> tag
+                image_tag = game.find("image")  # Fallback to <image> if <fanart> not found
+                desc_tag = game.find("desc")
+                rating_tag = game.find("rating")
+                releasedate_tag = game.find("releasedate")
 
                 game_data["name"] = name_tag.text if name_tag is not None else "Unknown Game"
-                
+                game_data["description"] = desc_tag.text if desc_tag is not None else "No description available"
+                game_data["rating"] = rating_tag.text if rating_tag is not None else "Unrated"
+
+                # Extract only the year from <releasedate> (first 4 characters)
+                if releasedate_tag is not None and len(releasedate_tag.text) >= 4:
+                    game_data["year"] = releasedate_tag.text[:4]
+                else:
+                    game_data["year"] = "Unknown"
+
                 # Resolve thumbnail path to an absolute path based on the gamelist.xml location
                 if thumbnail_tag is not None:
                     thumbnail_path = thumbnail_tag.text
@@ -47,12 +59,17 @@ def process_gamelist_files(search_directory, search_type):
                         thumbnail_path = os.path.join(root, thumbnail_path)
                     game_data["thumbnail"] = thumbnail_path
 
-                # Resolve fanart path based on the <image> tag if present
-                if image_tag is not None:
+                # Set fanart path based on <fanart> or fallback to <image>
+                if fanart_tag is not None:
+                    fanart_path = fanart_tag.text
+                elif image_tag is not None:
                     fanart_path = image_tag.text
-                    if not os.path.isabs(fanart_path):
-                        fanart_path = os.path.join(root, fanart_path)
-                    game_data["fanart"] = fanart_path
+                else:
+                    fanart_path = None  # No fanart available
+
+                if fanart_path and not os.path.isabs(fanart_path):
+                    fanart_path = os.path.join(root, fanart_path)
+                game_data["fanart"] = fanart_path
 
                 games.append(game_data)
 
