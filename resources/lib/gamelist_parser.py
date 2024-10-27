@@ -1,6 +1,6 @@
 import os
 import xml.etree.ElementTree as ET
-import xbmc  # Logging
+import xbmc  # type: ignore # Logging
 
 def process_gamelist_files(search_directory, search_type):
     games = []

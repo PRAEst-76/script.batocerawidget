@@ -1,8 +1,8 @@
 import sys
-import xbmc
-import xbmcplugin
-import xbmcgui
-import xbmcaddon
+import xbmc # type: ignore
+import xbmcplugin # type: ignore
+import xbmcgui # type: ignore
+import xbmcaddon # type: ignore
 import os
 from resources.lib.gamelist_parser import process_gamelist_files
 
