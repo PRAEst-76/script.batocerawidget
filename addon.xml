@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.batocerawidget" name="Batocera Widget" version="0.0.7" provider-name="PRAEst76">
+<addon id="script.batocerawidget" name="Favorite Games" version="0.1.1" provider-name="PRAEst76">
     <requires>
         <import addon="xbmc.python" version="3.0.0" />
     </requires>
-    
-    <!-- Main add-on type must be defined first -->
-    <extension point="xbmc.python.script" library="default.py">
+    <extension point="xbmc.python.pluginsource" library="default.py">
+        <!--
+        Set to video as the script doesn't seem to work if set as a program
+         -->
         <provides>video</provides>
     </extension>
     
     <!-- Metadata section -->
     <extension point="xbmc.addon.metadata">
-        <summary>Fetch favorite games from Batocera</summary>
-        <description>Searches through gamelist.xml files in the specified roms directory and displays favorite games with thumbnails and metadata.</description>
+        <summary>Fetches favorite games from Batocera and RetroPie and displays them in a Kodi widget</summary>
+        <description>Searches through gamelist.xml files in the roms directory for emulationStation-based systems like Batocera and RetroPie and displays favorite games with their thumbnails and metadata as a selectable video widget.</description>
         <platform>all</platform>
+        <language>en</language>
+        <license>GNU GENERAL PUBLIC LICENSE. Version 3, June 2007</license>
+        <source>https://github.com/PRAEst-76/script.batocerawidget</source>
+        <news>v0.1.1 (2024-10-27)
+            - Mostly works. Added support for RetroPie as well as Batocera. May work for other EmulationStation-based systems.</news>
         <assets>
             <icon>resources/icon.png</icon>
             <fanart>resources/fanart.jpg</fanart>
+            <screenshot>resources/screenshot-01.png</screenshot>
         </assets>
-    </extension>
-    
-    <!-- Settings section -->
-    <extension point="xbmc.addon.settings">
-        <category label="Settings">
-            <setting id="rom_directory" type="text" default="/userdata/roms" label="ROM Directory Path" />
-        </category>
     </extension>
 </addon>

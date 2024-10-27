@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="addon">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="requires">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="import">
+                                <xs:complexType>
+                                    <xs:attribute name="addon" use="required" />
+                                    <xs:attribute name="version" use="required" />
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="extension" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence minOccurs="0">
+                            <xs:element name="provides" minOccurs="0" type="xs:string" />
+                            <xs:element name="summary" minOccurs="0" type="xs:string" />
+                            <xs:element name="description" minOccurs="0" type="xs:string" />
+                            <xs:element name="platform" minOccurs="0" type="xs:string" />
+                        </xs:sequence>
+                        <xs:attribute name="point" use="required" />
+                        <xs:attribute name="library" />
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="id" use="required" />
+            <xs:attribute name="name" use="required" />
+            <xs:attribute name="version" use="required" />
+            <xs:attribute name="provider-name" use="required" />
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

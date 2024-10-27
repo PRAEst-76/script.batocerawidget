@@ -1,0 +1,14 @@
+<settings>
+    <category label="Gamelists">
+        <setting id="note_info" type="text" enable="false" label="Choose the defaults for your OS or set a custom folder." />
+        <setting id="data_directory_type" type="enum" label="Gamelist Dir" values="Batocera|RetroPie|Custom" default="0" />
+        <setting id="rom_directory" type="folder" visible="eq(-1,2)" label="Select Gamelist/ROMS folder" />
+        <setting id="folder_info" type="text" visible="eq(-2,2)" enable="false" label="Select the root folder where your gamelists are kept." />
+        <setting id="romdir_info" type="text" visible="eq(-3,2)" enable="false" label="(In most cases this will be the root of your ROMS folder.)" />
+    </category>
+    <!-- I'll implement this once I figure a way
+    <category label="Search Type">
+        <setting id="search_type" type="enum" label="Search Type" values="Favorites|Last 20 Added" default="0" />
+    </category>
+    -->
+</settings>
