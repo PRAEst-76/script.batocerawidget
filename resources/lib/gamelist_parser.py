@@ -7,7 +7,7 @@ def process_gamelist_files(search_directory, search_type):
 
     for root, dirs, files in os.walk(search_directory):
         # Skip hidden directories
-        dirs[:] = [d for d in dirs if not d.startswith('.')]  # Modify dirs in place to skip hidden ones
+        dirs[:] = [d for d in dirs if not d.startswith('.')]
 
         if 'gamelist.xml' in files:
             file_path = os.path.join(root, 'gamelist.xml')
@@ -22,59 +22,78 @@ def process_gamelist_files(search_directory, search_type):
                 tree = ET.parse(file_path)
             except ET.ParseError as e:
                 xbmc.log(f"Gamelist Parser: Error parsing {file_path} - {e}", xbmc.LOGERROR)
-                continue  # Skip this file and move on
+                continue
 
             gamelist_root = tree.getroot()
 
             for game in gamelist_root.findall("game"):
-                # Only include games with a <favorite> tag if search_type is for favorites
                 if search_type == "0" and game.find("favorite") is None:
                     continue
 
                 game_data = {}
 
-                # Extract game details
+                # Extract basic game details with checks
                 name_tag = game.find("name")
-                thumbnail_tag = game.find("thumbnail")
-                fanart_tag = game.find("fanart")  # Check for <fanart> tag
-                image_tag = game.find("image")  # Fallback to <image> if <fanart> not found
-                desc_tag = game.find("desc")
-                rating_tag = game.find("rating")
-                releasedate_tag = game.find("releasedate")
-
                 game_data["name"] = name_tag.text if name_tag is not None else "Unknown Game"
+
+                desc_tag = game.find("desc")
                 game_data["description"] = desc_tag.text if desc_tag is not None else "No description available"
+
+                rating_tag = game.find("rating")
                 game_data["rating"] = rating_tag.text if rating_tag is not None else "Unrated"
 
-                # Extract only the year from <releasedate> (first 4 characters)
-                if releasedate_tag is not None and len(releasedate_tag.text) >= 4:
+                releasedate_tag = game.find("releasedate")
+                if releasedate_tag is not None and releasedate_tag.text and len(releasedate_tag.text) >= 4:
                     game_data["year"] = releasedate_tag.text[:4]
                 else:
                     game_data["year"] = "Unknown"
 
+                # Extract additional metadata fields
+                genre_tag = game.find("genre")
+                game_data["genre"] = genre_tag.text if genre_tag is not None else "Unknown Genre"
+
+                developer_tag = game.find("developer")
+                game_data["developer"] = developer_tag.text if developer_tag is not None else "Unknown Developer"
+
+                platform_tag = game.find("platform")
+                game_data["platform"] = platform_tag.text if platform_tag is not None else "Unknown Platform"
+
                 # Resolve thumbnail path to an absolute path based on the gamelist.xml location
-                if thumbnail_tag is not None:
+                thumbnail_tag = game.find("thumbnail")
+                thumbnail_path = None
+                if thumbnail_tag is not None and thumbnail_tag.text:
                     thumbnail_path = thumbnail_tag.text
                     if not os.path.isabs(thumbnail_path):
                         thumbnail_path = os.path.join(root, thumbnail_path)
-                    game_data["thumbnail"] = thumbnail_path
+                game_data["thumbnail"] = thumbnail_path
 
-                # Set fanart path based on <fanart> or fallback to <image>
-                if fanart_tag is not None:
+                # Resolve fanart path based on <fanart> or <image> as a fallback
+                fanart_tag = game.find("fanart")
+                image_tag = game.find("image")
+                fanart_path = None
+                if fanart_tag is not None and fanart_tag.text:
                     fanart_path = fanart_tag.text
-                elif image_tag is not None:
+                elif image_tag is not None and image_tag.text:
                     fanart_path = image_tag.text
-                else:
-                    fanart_path = None  # No fanart available
 
                 if fanart_path and not os.path.isabs(fanart_path):
                     fanart_path = os.path.join(root, fanart_path)
                 game_data["fanart"] = fanart_path
 
+                # Extract ROM path if available
+                rom_path_tag = game.find("path")
+                if rom_path_tag is not None and rom_path_tag.text:
+                    rom_path = os.path.join(root, rom_path_tag.text)
+                    if os.path.isfile(rom_path):
+                        game_data["path"] = rom_path
+                        if search_type == "1":
+                            game_data["date_added"] = os.path.getmtime(rom_path)
+                    else:
+                        continue  # Skip if ROM file is missing
+
                 games.append(game_data)
 
-                # If we're only interested in the last 20 added games, stop after 20 entries
-                if search_type == "1" and len(games) >= 20:
-                    break
+    if search_type == "1":
+        games = sorted(games, key=lambda x: x.get("date_added", 0), reverse=True)[:25]
 
     return games

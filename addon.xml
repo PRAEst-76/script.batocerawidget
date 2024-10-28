@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.batocerawidget" name="Favorite Games" version="0.1.1" provider-name="PRAEst76">
+<addon id="script.batocerawidget" name="Batocera Games" version="0.1.20" provider-name="PRAEst76">
     <requires>
         <import addon="xbmc.python" version="3.0.0" />
     </requires>
@@ -12,13 +12,17 @@
     
     <!-- Metadata section -->
     <extension point="xbmc.addon.metadata">
-        <summary>Fetches favorite games from Batocera and RetroPie and displays them in a Kodi widget</summary>
-        <description>Searches through gamelist.xml files in the roms directory for emulationStation-based systems like Batocera and RetroPie and displays favorite games with their thumbnails and metadata as a selectable video widget.</description>
-        <platform>all</platform>
+        <summary>Fetches selected games from Batocera and RetroPie and displays them in a Kodi widget</summary>
+        <description>Searches through gamelist.xml files in the roms directory for emulationStation-based systems like Batocera and RetroPie and displays favorited or latest games with their thumbnails and metadata as a selectable video widget.</description>
+        <platform>linux</platform>
         <language>en</language>
         <license>GNU GENERAL PUBLIC LICENSE. Version 3, June 2007</license>
         <source>https://github.com/PRAEst-76/script.batocerawidget</source>
-        <news>v0.1.1 (2024-10-27)
+        <disclaimer>This addon only works if used ontop of an EmulationStation-based distro like Batocera or RetroPie. May work with other ES-based setups, but no guarantee is given.</disclaimer>
+        <news>
+            v0.2.0 (2024-10-28)
+            - Added the ability to choose between favorites and latest added games as well as support for RetroPie and custom romdir and run command entries.
+            v0.1.1 (2024-10-27)
             - Mostly works. Added support for RetroPie as well as Batocera. May work for other EmulationStation-based systems.</news>
         <assets>
             <icon>resources/icon.png</icon>
