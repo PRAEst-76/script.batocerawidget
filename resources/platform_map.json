@@ -17,7 +17,7 @@
 	"apple2": "Apple II",
 	"apple2gs": "Apple IIGS",
 	"arcade": "Arcade",
-	"arcadia": "Arcadia 2001"
+	"arcadia": "Arcadia 2001",
 	"archimedes": "Acorn Archimedes",
 	"arduboy": "Arduino",
 	"astrocade": "Bally Astrocade",
@@ -188,72 +188,70 @@
 	"sdlpop": "PC",
 	"sega32x": "Sega 32x",
 	"segacd": "Sega CD",
-	"segastv": 
-    "sg-1000":
-	"sg1000":
-	"sgb":
-	"singe":
+	"segastv": "Sega S-TV",
+    "sg-1000": "Sega SG-1000",
+	"sg1000": "Sega SG-1000",
+	"sgb": "Nintendo Super Game Boy",
+	"singe": "Arcade",
 	"snes": "Super Nintendo Entertainment System",
     "snes-msu": "Super Nintendo Entertainment System",
-    "snes-msu1":
-	"socrates":
-	"solarus":
-    "sonic3-air":
-	"sonic3air":
-    "sonic-mania":
-	"sonicmania":
-	"sonicretro":
-	"spectravideo":
-	"steam":
-	"sufami":
-	"superbroswar":
-	"supergrafx":
-	"supervision":
-	"supracan":
-	"switch":
-	"systemsp":
-	"teknoparrot":
-	"theforceengine":
-	"thextech":
-	"thomson":
-	"ti99":
-	"tic80":
-	"triforce":
-	"tutor":
-	"tvgames":
-	"tyrian":
-	"tyrquake":
-	"uqm":
-	"uzebox":
-	"vc4000":
-	"vectrex":
-	"vgmplay":
-	"videopacplus":
-	"vircon32":
-	"virtualboy":
-	"vis":
-	"vitaquake2":
-	"vpinball":
-	"vsmile":
-	"wasm4":
-	"web":
-	"wii":
-	"wiiu":
-	"windows":
-    "windows_installers":
-	"wswan":
-	"wswanc":
-	"x1":
-	"x68000":
-    "xash3d_fwgs":
-	"xbox":
-	"xbox360":
-	"xegs":
-	"xrick":
-	"zaccariapinball":
-	"zc210":
-	"zinc":
-	"zmachine":
-	"zx81":
-	"zxspectrum":
+    "snes-msu1": "Super Nintendo Entertainment System",
+	"socrates": "VTech Socrates",
+	"solarus": "Solarus",
+    "sonic3-air": "Sonic 3 AIR",
+	"sonic3air": "Sonic 3 AIR",
+    "sonic-mania": "Sonic Mania",
+	"sonicmania": "Sonic Mania",
+	"sonicretro":"Sonic Retro",
+	"spectravideo": "SpectraVideo",
+	"steam": "PC",
+	"sufami": "SuFami Turbo",
+	"superbroswar": "PC",
+	"supergrafx": "PC Engine SuperGrafx",
+	"supervision": "Watara SuperVision",
+	"supracan": "Super A'can",
+	"switch": "Nintendo Switch",
+	"teknoparrot": "Arcade",
+	"theforceengine": "PC",
+	"thomson": "Thomson MO/TO",
+	"ti99": "TI/99",
+	"tic80": "TIC-80",
+	"triforce": "Arcade",
+	"tutor": "Tomy Tutor",
+	"tvgames": "TV Games",
+	"tyrian": "PC",
+	"tyrquake": "PC",
+	"uqm": "PC",
+	"uzebox": "Uzebox",
+	"vc4000": "Interton Video Computer 4000",
+	"vectrex": "GCE Vectrex",
+	"vgmplay": "Video Game Music",
+	"videopacplus": "Phillips VdeoPac+",
+	"vircon32": "Vircon32",
+	"virtualboy": "Nintendo Virtual Boy",
+	"vis": "Tandy Video Information System",
+	"vitaquake2": "PC",
+	"vpinball": "Visual Pinball",
+	"vsmile": "VTech V.Smile",
+	"wasm4": "WASM4",
+	"web": "Browser Game",
+	"wii": "Nintendo Wii",
+	"wiiu": "Nintendo Wii U",
+	"windows": "PC",
+    "windows_installers": "PC",
+	"wswan": "Bandai Wonderswan",
+	"wswanc": "Bandai Wonderswan Color",
+	"x1": "Sharp X1",
+	"x68000": "Sharp X68000",
+    "xash3d_fwgs": "PC",
+	"xbox": "Microsoft X-Box",
+	"xbox360": "Microsoft X-Box 360",
+	"xegs": "Atari XEGS",
+	"xrick": "PC",
+	"zaccariapinball": "Arcade",
+	"zc210": "Zelda Classic",
+	"zinc": "Arcade",
+	"zmachine": "Infocom Z-Machine",
+	"zx81": "Sinclair ZX81",
+	"zxspectrum": "Sinclair Zx Spectrum"
 }
