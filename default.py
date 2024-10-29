@@ -13,36 +13,20 @@ ADDON = xbmcaddon.Addon()
 HANDLE = int(sys.argv[1])
 
 def load_platform_map():
-    """Load platform mappings from platform_map.json."""
+    """Load platform mappings from platform_map.json with UTF-8 encoding."""
     platform_map_path = os.path.join(ADDON.getAddonInfo("path"), "resources", "platform_map.json")
     try:
-        with open(platform_map_path, "r") as file:
+        with open(platform_map_path, "r", encoding="utf-8") as file:
             return json.load(file)
     except Exception as e:
         xbmc.log(f"Error loading platform map: {e}", xbmc.LOGERROR)
         return {}
 
-def scan_roms():
-    """Scans the ROM directory and processes game metadata."""
+def display_games(search_type):
+    """Displays games based on the search type (favorites or latest)."""
     rom_directory = ADDON.getSetting("rom_directory")
-    search_type = ADDON.getSetting("search_type")  # "0" for Favorites, "1" for Latest 25 Games
     platform_map = load_platform_map()
     games = process_gamelist_files(rom_directory, search_type, platform_map)
-    return games
-
-def force_rescan_roms():
-    """Forces a rescan of the ROMs directory."""
-    xbmc.log("Forced rescan of ROMs directory initiated.", xbmc.LOGNOTICE)
-    games = scan_roms()
-    xbmcgui.Dialog().notification("Batocera Widget", "ROMs rescan completed.", xbmcgui.NOTIFICATION_INFO)
-    return games
-
-def main():
-    if ADDON.getSetting("force_rescan") == "true":
-        games = force_rescan_roms()
-        ADDON.setSetting("force_rescan", "false")
-    else:
-        games = scan_roms()
 
     for game in games:
         list_item = xbmcgui.ListItem(label=game["name"])
@@ -60,7 +44,7 @@ def main():
             "rating": rating_value,
             "genre": game.get("genre", "Unknown Genre"),
             "director": game.get("developer", "Unknown Developer"),
-            "tagline": game.get("platform", "Unknown Platform")  # Using tagline to show platform name
+            "tagline": game.get("platform", "Unknown Platform")
         }
         list_item.setInfo("video", video_info)
 
@@ -72,9 +56,31 @@ def main():
 
     xbmcplugin.endOfDirectory(HANDLE)
 
+def main():
+    """Main menu to choose between Favorites and Latest 25 Games."""
+    xbmcplugin.setPluginCategory(HANDLE, "Batocera Games")
+    xbmcplugin.setContent(HANDLE, "videos")
+
+    # Add menu items for Favorites and Latest 25 Games
+    favorites_item = xbmcgui.ListItem(label="Favorites")
+    favorites_url = f"plugin://script.batocera/?action=favorites"
+    xbmcplugin.addDirectoryItem(handle=HANDLE, url=favorites_url, listitem=favorites_item, isFolder=True)
+
+    latest_item = xbmcgui.ListItem(label="Latest 25 Games")
+    latest_url = f"plugin://script.batocera/?action=latest"
+    xbmcplugin.addDirectoryItem(handle=HANDLE, url=latest_url, listitem=latest_item, isFolder=True)
+
+    xbmcplugin.endOfDirectory(HANDLE)
+
 def router(paramstring):
     params = dict(arg.split("=") for arg in paramstring.split("&") if "=" in arg)
-    if params.get("action") == "run" and "rom_path" in params:
+    action = params.get("action")
+
+    if action == "favorites":
+        display_games("0")  # Show favorites
+    elif action == "latest":
+        display_games("1")  # Show latest 25 games
+    elif action == "run" and "rom_path" in params:
         launch_game(params["rom_path"])
     else:
         main()
