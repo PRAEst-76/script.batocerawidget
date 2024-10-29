@@ -98,109 +98,109 @@
 	"hcl": "PC",
 	"hikaru": "Sega Hikaru",
 	"hurrican": "PC",
-	"ikemen":
-	"intellivision":
-	"iortcw":
-	"j2me":
-	"jaguar":
-	"jaguarcd":
-	"karaoke":
-	"kodi":
-	"laser310":
-	"lcdgames":
-	"love":
-	"lowresnx":
-	"lutro":
-	"lynx":
-	"macintosh":
-	"mame":
-mame-libretro
-mame-mame4all
-	"mastersystem":
-	"megadrive":
-megadrive-msu
-	"megaduck":
-	"model2":
-	"model3":
-	"moonlight":
-	"mrboom":
-msu-md
-	"msx1":
-	"msx2":
-msx2+
-	"msxturbor":
-	"mugen":
-	"multivision":
-	"n64":
-	"n64dd":
-	"namco2x6":
-	"naomi":
-	"naomi2":
-	"nds":
-	"neogeo":
-	"neogeo64":
-	"neogeocd":
-	"nes":
-	"ngage":
-	"ngage2":
-	"ngp":
-	"ngpc":
-	"o2em":
-	"odcommander":
-	"openbor":
-	"opengoal":
-	"openjazz":
-	"openlara":
-	"oricatmos":
-	"pc88":
-	"pc98":
-	"pcengine":
-	"pcenginecd":
-	"pcfx":
-	"pdp1":
-	"pegasus":
-	"pet":
-	"pico":
-	"pico8":
-	"pinballfx":
-	"pinballfx2":
-	"pinballfx3":
-	"pinballm":
-	"plugnplay":
-	"pokemini":
-	"ports":
-	"prboom":
-	"ps3":
-	"psp":
-	"psvita":
-	"psx":
-	"pv1000":
-	"pygame":
-	"quake3":
-	"raze":
-	"reminiscence":
-	"rott":
-	"samcoupe":
-	"satellaview":
-	"saturn":
-	"scummvm":
-	"scv":
-	"sdlpop":
-	"sega32x":
-	"segacd":
-	"segastv":
-sg-1000
+	"ikemen": "PC",
+	"intellivision": "Mattel Intellivision",
+	"iortcw": "PC",
+	"j2me": "Java 2 Mobile Edition",
+	"jaguar": "Atari Jaguar",
+	"jaguarcd": "Atari Jaguar CD",
+	"karaoke": "Karaoke",
+	"kodi": "Kodi",
+	"laser310": "VTech Laser 200",
+	"lcdgames": "Handheld Electronic Game",
+	"love": "PC",
+	"lowresnx": "PC",
+	"lutro": "PC",
+	"lynx": "Atari Lynx",
+	"macintosh": "Apple Macintosh",
+	"mame": "Arcade",
+    "mame-libretro": "Arcade",
+    "mame-mame4all": "Arcade",
+	"mastersystem": "Sega Mastersystem",
+	"megadrive": "Sega Megadrive",
+    "megadrive-msu": "Sega Megadrive",
+	"megaduck": "Mega Duck",
+	"model2": "Arcade",
+	"model3": "Arcade",
+	"moonlight": "PC",
+	"mrboom": "PC",
+    "msu-md": "Sega Megadrive Plus",
+	"msx1": "MSX",
+	"msx2": "MSX 2",
+    "msx2+": "MSX 2+",
+	"msxturbor": "MSX Turbor",
+	"mugen": "Arcade",
+	"multivision": "Othello Multivision",
+	"n64": "Nintendo 64",
+	"n64dd": "Nntendo 64DD",
+	"namco2x6": "Arcade",
+	"naomi": "Arcade",
+	"naomi2": "Arcade",
+	"nds": "Nintendo DS",
+	"neogeo": "SNK NeoGeo",
+	"neogeo64": "SNK NeoGeo 64",
+	"neogeocd": "SNK NeoGeo CD",
+	"nes": "Nintendo Entertainment System",
+	"ngage": "Nokia N-Gage",
+	"ngage2": "Nokia N-Gage 2.0",
+	"ngp": "SNK NeoGeo Pocket",
+	"ngpc": "SNK NEoGeo Pocket Color",
+	"o2em": "Magnavox Odyssey 2",
+	"odcommander": "OD Commander",
+	"openbor": "PC",
+	"opengoal": "PC",
+	"openjazz": "PC",
+ 	"openlara": "PC",
+	"oricatmos": "Oric Atmos",
+	"pc88": "NEC PC-8800",
+	"pc98": "NEC PC-9800",
+	"pcengine": "NEC PC Engine",
+	"pcenginecd": "NEC PC Engine CD",
+	"pcfx": "NEC PC-FX",
+	"pdp1": "DEC PDP-1",
+	"pet": "Commodore PET",
+	"pico": "Sega Pico",
+	"pico8": "PICO-8",
+	"pinballfx": "Pinball FX",
+	"pinballfx2": "Pinball FX 2",
+	"pinballfx3": "Pinball FX 3",
+	"pinballm": "Pinball M",
+	"plugnplay": "TV Games",
+	"pokemini": "Pokemon Mini",
+	"ports": "PC",
+	"prboom": "PC",
+    "ps2": "Sony PlayStation 2",
+	"ps3": "Sony PlayStation 3",
+	"psp": "Sony PlayStation Portable",
+	"psvita": "Sony PlayStation Vita",
+	"psx": "Sony PlayStation",
+	"pv1000": "Casio PV-1000",
+	"pygame": "PC",
+	"quake3": "PC",
+	"raze": "PC",
+	"reminiscence": "PC",
+	"rott": "PC",
+	"samcoupe": "SAM Coupé",
+	"satellaview": "Nintendo Satellaview",
+	"saturn": "Sega Saturn",
+	"scummvm": "PC",
+	"scv": "Epoch Super CassetteVision",
+	"sdlpop": "PC",
+	"sega32x": "Sega 32x",
+	"segacd": "Sega CD",
+	"segastv": 
+    "sg-1000":
 	"sg1000":
 	"sgb":
 	"singe":
-	"snes":
-snes-msu
-snes-msu1
+	"snes": "Super Nintendo Entertainment System",
+    "snes-msu": "Super Nintendo Entertainment System",
+    "snes-msu1":
 	"socrates":
 	"solarus":
-sonic3-air
+    "sonic3-air":
 	"sonic3air":
-sonic-mania
+    "sonic-mania":
 	"sonicmania":
 	"sonicretro":
 	"spectravideo":
@@ -240,12 +240,12 @@ sonic-mania
 	"wii":
 	"wiiu":
 	"windows":
-windows_installers
+    "windows_installers":
 	"wswan":
 	"wswanc":
 	"x1":
 	"x68000":
-xash3d_fwgs
+    "xash3d_fwgs":
 	"xbox":
 	"xbox360":
 	"xegs":
