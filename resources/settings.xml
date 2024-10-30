@@ -2,16 +2,16 @@
     <category label="Gamelists">
         <setting id="note_info" type="text" enable="false" label="Choose the defaults for your OS or set a custom folder." />
         <setting id="data_directory_type" type="enum" label="Gamelist Dir" values="Batocera|RetroPie|Custom" default="0" />
-        <setting id="rom_directory" type="folder" visible="eq(-1,2)" label="Select Gamelist/ROMS folder" />
+        <setting id="custom_rom_directory" type="folder" visible="eq(-1,2)" label="Select Gamelist/ROMS folder" />
         <setting id="folder_info" type="text" visible="eq(-2,2)" enable="false" label="Select the root folder where your gamelists are kept." />
         <setting id="romdir_info" type="text" visible="eq(-3,2)" enable="false" label="(In most cases this will be the root of your ROMS folder.)" />
     </category>
-
+    <!--
     <category label="Search Type">
         <setting id="search_info" type="text" enable="false" label="Should the widget show favorites or laest games?" />
         <setting id="search_type" type="enum" label="Search Type" values="Favorites|Latest 25 Games" default="0" />
     </category>
-
+    -->
     <category label="Run Command">
         <!-- General informational note -->
         <setting id="run_info" type="text" enable="false" label="Optional: Select OS for running ROMs or set custom command." />
@@ -30,7 +30,7 @@
     </category>
   
     <category label="Rescan">
-        <setting id="search_info" type="text" enable="false" label="Force rescan if gameslists have changed since startup." />
+        <setting id="search_info" type="text" enable="false" label="Force rescan if gamelists have changed since startup." />
         <setting id="force_rescan" type="action" label="Force Rescan of ROMs Directory" />
     </category>
     
