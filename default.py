@@ -2,10 +2,10 @@ import os
 import sys
 import json
 import subprocess
-import xbmc
-import xbmcplugin
-import xbmcgui
-import xbmcaddon
+import xbmc # type: ignore
+import xbmcplugin # type: ignore
+import xbmcgui # type: ignore
+import xbmcaddon # type: ignore
 from resources.lib.gamelist_parser import process_gamelist_files
 
 ADDON = xbmcaddon.Addon()
