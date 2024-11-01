@@ -6,7 +6,7 @@ As this is an early alpha and I'm not a skilled developer please open issues for
 
 #### To-do:
 
-- Add support for additional search patterns like "latest games" etc..
+- ~~~Add support for additional search patterns like "latest games" etc..~~~
 - Add other languages.
 - Add support for more ES-based platforms.
 - Tidy the code.
