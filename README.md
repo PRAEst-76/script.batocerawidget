@@ -7,6 +7,7 @@ As this is a beta and I'm not a skilled developer please open issues for any bug
 ### To-do:
 
 - [x] Add support for additional search patterns like "latest games" etc.. (2024.10.29)
+- [ ] Find some way to speed up scanning
 - [ ] Add ability to run games from the widget.
 - [ ] Add more filters.
 - [ ] Add other languages.
