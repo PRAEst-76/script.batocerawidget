@@ -6,32 +6,19 @@
         <setting id="folder_info" type="text" visible="eq(-2,2)" enable="false" label="Select the root folder where your gamelists are kept." />
         <setting id="romdir_info" type="text" visible="eq(-3,2)" enable="false" label="(In most cases this will be the root of your ROMS folder.)" />
     </category>
-    <!--
-    <category label="Search Type">
-        <setting id="search_info" type="text" enable="false" label="Should the widget show favorites or laest games?" />
-        <setting id="search_type" type="enum" label="Search Type" values="Favorites|Latest 25 Games" default="0" />
-    </category>
-    -->
+
     <category label="Run Command">
-        <!-- General informational note -->
-        <setting id="run_info" type="text" enable="false" label="Optional: Select OS for running ROMs or set custom command." />
-    
-        <!-- Run command selection -->
+        <setting id="run_info" type="text" enable="false" label="Optional: Select OS for running ROMs or set a custom command." />
         <setting id="run_command_type" type="enum" label="Game Run Command" values="None|Batocera|RetroPie|Custom" default="1" />
-    
-        <!-- Notes based on selected run command -->
         <setting id="norun_info" type="text" visible="eq(-1,0)" enable="false" label="Don't run game, just display info." />
         <setting id="batrun_info" type="text" visible="eq(-2,1)" enable="false" label="Run game using Batocera defaults." />
         <setting id="rprun_info" type="text" visible="eq(-3,2)" enable="false" label="Run game using RetroPie defaults." />
         <setting id="cusrun_info" type="text" visible="eq(-4,3)" enable="false" label="Run game using custom command." />
-    
-        <!-- Custom command setting, only visible if 'Custom' is selected -->
         <setting id="custom_run_command" type="text" visible="eq(-2,3)" label="Custom Run Command" />
     </category>
-  
+
     <category label="Rescan">
         <setting id="search_info" type="text" enable="false" label="Force rescan if gamelists have changed since startup." />
         <setting id="force_rescan" type="action" label="Force Rescan of ROMs Directory" />
     </category>
-    
 </settings>
